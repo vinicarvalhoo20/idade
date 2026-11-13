@@ -1,0 +1,189 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap");
+
+:root {
+    --fundo-claro: #0707fc;
+    --fundo-escuro: #6191f9;
+    --fundo-brilho: #0707fc;
+    --vidro: rgba(3, 8, 148, 0.963);
+    --neon: #035b60;
+    --borda: rgba(255, 255, 255, 0.85);
+    --texto: #ffffff;
+    --texto-suave: rgba(255, 255, 255, 0.991);
+    --campo: #6191f9;
+    --certo: #5dffb0;
+    --erro: #ff8aa0;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    padding: 2rem 1rem;
+    font-family: "Montserrat", "Segoe UI", sans-serif;
+    color: var(--texto);
+    background:
+        radial-gradient(circle at 0% 100%, var(--fundo-brilho) 0%, transparent 45%),
+        radial-gradient(circle at 100% 0%, var(--fundo-claro) 0%, transparent 50%),
+        var(--fundo-escuro);
+}
+
+header {
+    width: 100%;
+    max-width: 420px;
+    padding: 0 2.5rem;
+}
+
+h1 {
+    font-size: 2.2rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+}
+
+/* Cartão de vidro com borda neon */
+main {
+    width: 100%;
+    max-width: 420px;
+    padding: 2.5rem;
+    border-radius: 28px;
+    background: var(--vidro);
+    border: 2px solid var(--borda);
+    box-shadow:
+        0 0 0 1px rgba(56, 230, 255, 0.35),
+        0 0 28px rgba(56, 230, 255, 0.55),
+        inset 0 0 40px rgba(56, 230, 255, 0.12);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+}
+
+main > p {
+    margin-bottom: 1.75rem;
+    color: var(--texto-suave);
+    font-size: 1.2rem;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding-left: 1.25rem;
+    color: var(--texto-suave);
+}
+
+input[type="number"] {
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+    margin-bottom: 1.25rem;
+    font: inherit;
+    font-size: 1.05rem;
+    color: var(--texto);
+    background: var(--campo);
+    border: 1.5px solid var(--borda);
+    border-radius: 999px;
+    box-shadow: 0 -2px 10px rgba(56, 230, 255, 0.35);
+    outline: none;
+    appearance: textfield;
+    -moz-appearance: textfield;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"]:focus {
+    border-color: var(--neon);
+    box-shadow: 0 0 16px rgba(56, 230, 255, 0.7);
+}
+
+button {
+    width: 100%;
+    padding: 0.95rem 1.5rem;
+    font: inherit;
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--texto);
+    background: var(--campo);
+    border: 1.5px solid var(--borda);
+    border-radius: 999px;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.1s;
+}
+
+button:hover {
+    box-shadow: 0 0 18px rgba(56, 230, 255, 0.75);
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+button:focus-visible {
+    outline: 2px solid var(--neon);
+    outline-offset: 3px;
+}
+
+/* Resultado */
+#resultado {
+    margin-top: 1.5rem;
+    min-height: 1.5rem;
+    text-align: center;
+    font-weight: 500;
+}
+
+#resultado.maior {
+    color: var(--certo);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    font-size: 1.3rem;
+    border: 1px solid var(--certo);
+    border-radius: 999px;
+}
+
+#resultado.menor,
+#resultado.invalido {
+    color: var(--erro);
+    text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    font-size: 1.3rem;
+    border: 1px solid var(--erro);
+    border-radius: 999px;
+}
+
+footer {
+    max-width: 420px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: var(--texto-suave);
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 2rem 1.5rem;
+    }
+
+    header {
+        padding: 0 1.5rem;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+    }
+}
